@@ -69,7 +69,11 @@ public class PlayerCon : MonoBehaviour
     {
         get
         {
-            return anim.GetBool(AnimString.canMove);
+            if (playerHasDie || GameMenager.instance._win)
+            {
+                return false;
+            }
+            else return anim.GetBool(AnimString.canMove); ;
         }
         set
         {
@@ -109,6 +113,7 @@ public class PlayerCon : MonoBehaviour
 
     private void Update()
     {
+
         _AmmoOut = currentAmmo <= 0;
 
         if(running == true)
@@ -131,7 +136,15 @@ public class PlayerCon : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        _isMoveing = moveInput != Vector2.zero;
+
+        if (_CanMove)
+        {
+            _isMoveing = moveInput != Vector2.zero;
+        }
+        else if(!_CanMove)
+        {
+            _isMoveing = false;
+        }
     }
 
     public void OnRun(InputAction.CallbackContext context)
@@ -163,7 +176,7 @@ public class PlayerCon : MonoBehaviour
 
     public void OnAtk(InputAction.CallbackContext context)
     {
-        if(context.started && _AmmoOut == false)
+        if(context.started && _AmmoOut == false && _CanMove)
         {
             Debug.Log("Fire");
             FindAnyObjectByType<Audio>().play("Shoot", true);

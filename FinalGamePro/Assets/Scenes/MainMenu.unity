@@ -380,6 +380,10 @@ PrefabInstance:
       propertyPath: sounds.Array.data[5].volume
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 7225464629358419951, guid: 9bbacdb8122be494185ea2af8d3a53ac, type: 3}
+      propertyPath: sounds.Array.data[7].volume
+      value: 0.267
+      objectReference: {fileID: 0}
     - target: {fileID: 7225464629358419952, guid: 9bbacdb8122be494185ea2af8d3a53ac, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -411,7 +415,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401627298}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: cb5acd3b5470cc8488d05630bbfda9b7, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 2253f367bc055964d89d07863ee68100, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}

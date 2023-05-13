@@ -24,6 +24,7 @@ public class GameMenager : MonoBehaviour
 
     public bool canPass { get; private set; }
     public bool win;
+    public bool die;
 
     public int _PlayerLP
     {
@@ -49,7 +50,22 @@ public class GameMenager : MonoBehaviour
         set 
         { 
             win = value;
-            FindAnyObjectByType<Audio>().play("Dame",win);
+            FindAnyObjectByType<Audio>().play("Cowboy", win);
+        }
+    }
+
+    public bool _die
+    {
+        get
+        {
+            
+            return die;
+        }
+        set 
+        { 
+            die = value;
+            player.playerHasDie = value;
+            //FindAnyObjectByType<Audio>().play("Cowboy", value);
         }
     }
 
@@ -85,18 +101,19 @@ public class GameMenager : MonoBehaviour
         newGame();
     }
 
+
     private void Update()
     {
-        player.playerHasDie = _PlayerLP == 0;
+        _die = _PlayerLP <= 0;
         canPass = key == 4;
-        if (_PlayerLP == 0)
+        if (_PlayerLP <= 0)
         {
             //Debug.Log("Die");
             enemy.enabled = false;
             player.enabled = false;
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("getKey");
+                Debug.Log("getKey");   
                 newGame();
                 enemy.enabled = true;
                 player.enabled = true;
@@ -112,9 +129,8 @@ public class GameMenager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-            //Application.Quit();
-
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            Application.Quit();
         }
     }
 

@@ -40,19 +40,22 @@ public class UI : MonoBehaviour
         //stmText.text = "Stamina " + stamina + " / " + player.maxStm;
         bulletText.text = "Bullet " + player.currentAmmo;
         keyCollect.text = gm.key.ToString();
-        if (GameMenager.instance.canPass)
-        {
-            alert.text = "Find Door!!";
-            alert.color = Color.red;
-        }
+        
         if (player.playerHasDie)
         {
             alert.text = "Press SpaceBar to try agian";
+            GameMenager.instance._die = true;
             alert.color = Color.white;
         }
-        else
+        else if(!player.playerHasDie)
         {
             alert.text = "";
+            if (GameMenager.instance.canPass)
+            {
+                alert.text = "Find Door!!";
+                Debug.Log("CanPass");
+                alert.color = Color.red;
+            }
         }
         if (GameMenager.instance._win)
         {
@@ -65,6 +68,7 @@ public class UI : MonoBehaviour
     {
         win.SetActive(false);
         lost.SetActive(false);
+        //FindAnyObjectByType<Audio>().play("Cowboy", false);
     }
 
     void img()

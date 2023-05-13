@@ -87,3 +87,9 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  - name: Cowboy
+    clip: {fileID: 8300000, guid: 9f3d7a100b38b354ca13d4fb3204d4d9, type: 3}
+    volume: 0.245
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
