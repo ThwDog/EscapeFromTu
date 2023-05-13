@@ -103,7 +103,6 @@ public class PlayerCon : MonoBehaviour
         currentAmmo = maxAmmo;
         playerInput = new Inputs();
         playerInput.Player.Enable();
-        Cursor.visible = false;
         gm = GameObject.Find("GameManager").GetComponent<GameMenager>();
         anim = GetComponent<Animator>();
     }

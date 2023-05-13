@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5270039632377764071}
   m_Layer: 0
   m_Name: SpawnItem
-  m_TagString: Untagged
+  m_TagString: Spawnner
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,6 +11,7 @@ public class GameMenager : MonoBehaviour
     PlayerCon player;
     Enemy enemy;
     UI ui;
+    public List<SpawnItem> spawnItem;
 
     [Header("Player")]
     public Transform playerSpawn;
@@ -61,7 +62,7 @@ public class GameMenager : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCon>();
@@ -69,6 +70,14 @@ public class GameMenager : MonoBehaviour
         enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
         enemyLocation = enemy.transform;
         ui = GameObject.FindGameObjectWithTag("Ui").GetComponent<UI>();
+
+
+        GameObject[] s = GameObject.FindGameObjectsWithTag("Spawnner");
+        for(int i = 0; i < s.Length; i++)
+        {
+            Debug.Log(s[i]);
+            spawnItem.Add(s[i].GetComponent<SpawnItem>());
+        }
     }
 
     private void Start()
@@ -103,8 +112,8 @@ public class GameMenager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-            Application.Quit();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            //Application.Quit();
 
         }
     }
@@ -115,6 +124,11 @@ public class GameMenager : MonoBehaviour
         setLive(3);
         setAmmo(2);
         setPoint(0);
+        foreach(var item in spawnItem)
+        {
+            Debug.Log(item.name);
+            item.spawn(item.item);
+        }
         setspawn(playerLocation,playerSpawn);
         setspawn(enemyLocation,enemySpawn);
         player.currentStm = player.maxStm;

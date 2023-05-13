@@ -38,10 +38,27 @@ public class Audio : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             play("HorrorBg", true);
+            Cursor.visible = true;
         }
         else if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             play("Piano", true);
+            Cursor.visible = false;
+        }
+    }
+
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            play("Piano", false);
+            Cursor.visible = true;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            play("HorrorBg", false);
+            Cursor.visible = false;
         }
     }
 

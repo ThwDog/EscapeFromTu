@@ -11,6 +11,7 @@ TagManager:
   - Node
   - Door
   - Ui
+  - Spawnner
   layers:
   - Default
   - TransparentFX

@@ -92,6 +92,7 @@ public class Enemy : MonoBehaviour
         playerPo = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCon>().transform;
         anim = GetComponent<Animator>();
         findPath();
+        resetPath();
     }
 
     private void Update()

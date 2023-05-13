@@ -5,16 +5,16 @@ using UnityEngine;
 [RequireComponent(typeof(GameObject))]
 public class SpawnItem : MonoBehaviour
 {
-    [SerializeField] GameObject item;
+    public GameObject item;
     [SerializeField]float reSpawnTime;
     [SerializeField] bool canRespawn;
 
     private void Awake()
     {
-        spawn(item);
+        //spawn(item);
     }
 
-    void spawn(GameObject item)
+    public void spawn(GameObject item)
     {
         Instantiate(item,gameObject.transform.position,gameObject.transform.rotation); 
     }
